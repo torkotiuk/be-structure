@@ -10,6 +10,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/v1/products', routes.products);
+app.use((error, _, res, __) => {
+  const { code = 500, message = 'server error' } = error;
+
+  res.status(code).json({
+    status: 'fail',
+    code,
+    message,
+  });
+});
+app.use((_, res) => {
+  res.status(404).json({
+    status: 'error',
+    code: 404,
+    message: 'Not found',
+  });
+});
 
 mongoose
   .connect(DB_HOST, {
