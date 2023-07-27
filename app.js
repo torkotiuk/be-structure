@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/v1/products', routes.products);
 app.use('/api/v1/users', routes.users);
+app.use('/api/v1/auth', routes.auth);
 app.use((error, _, res, __) => {
   const { code = 500, message = 'server error' } = error;
 
