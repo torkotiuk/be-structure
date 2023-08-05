@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
 const mongoose = require('mongoose');
+require('./settings/passport-config');
 require('dotenv').config();
 const { DB_HOST, PORT = 5000 } = process.env;
 
